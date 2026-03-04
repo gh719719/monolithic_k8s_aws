@@ -54,14 +54,11 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> auth
             .requestMatchers(
-                "/users/signUp",
-                "/users/signIn",
-                "/openai/**",
-                "/forecast/**").permitAll()
+                "/users/sigIn",
+                            "/health/alive").permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             //.requestMatchers("").authenticated()
             .requestMatchers("/admin/**").hasRole("ADMIN")  // 이 엔드포인트는 admin만 접근해라
-            .requestMatchers("/", "/orders/**", "/health").permitAll()
             .anyRequest().authenticated()
         )
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
