@@ -33,3 +33,12 @@ jobs:
 
       - name: aws ecr login
         uses: aws-actions/amazon-ecr-login@v1
+
+      - name: image build and push docker image to ecr
+        env: 
+          REGISTRY: 414901227428.dkr.ecr.ap-northeast-2.amazonaws.com
+          REPOSITORY: order-gh719719-backend
+          IMAGE_TAG: latest
+        run:
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
