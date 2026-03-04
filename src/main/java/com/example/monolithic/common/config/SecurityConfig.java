@@ -61,6 +61,7 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             //.requestMatchers("").authenticated()
             .requestMatchers("/admin/**").hasRole("ADMIN")  // 이 엔드포인트는 admin만 접근해라
+            .requestMatchers("/", "/orders/**", "/health").permitAll()
             .anyRequest().authenticated()
         )
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
