@@ -39,6 +39,6 @@ jobs:
           REGISTRY: 414901227428.dkr.ecr.ap-northeast-2.amazonaws.com
           REPOSITORY: order-gh719719-backend
           IMAGE_TAG: latest
-        run:
+        run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f Dockerfile .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
