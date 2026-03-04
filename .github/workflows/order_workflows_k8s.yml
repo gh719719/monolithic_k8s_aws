@@ -5,3 +5,15 @@ on:
   push:
     branches:
       - main  # github의 main branch에 push하면 workflow의 액션 감지 -> 파이프라인 동작
+
+jobs:
+  
+  # job-name
+  build-and-deploy:
+
+    # runner
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout github
+        uses: actions/checkout@v2
