@@ -27,3 +27,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET }}
           aws-region: ap-northeast-2
+
+      - name: aws eks cluster update
+        run: aws eks update-kubeconfig --region ap-northeast-2 --name lgcns-gh719719-cluster
+
+      - name: aws ecr login
+        uses: aws-actions/amazon-ecr-login@v1
